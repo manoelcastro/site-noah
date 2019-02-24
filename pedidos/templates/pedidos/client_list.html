@@ -1,20 +1,28 @@
+{% load staticfiles %}
 <html>
     <head>
         <title>Começando o Noah</title>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="{% static 'css/pedidos.css' %}">
     </head>
     <body>
-        <div>
-            <h1><a href="/">Bem vindo ao Noah</a></h1>
+        <div class="page-header">
+            <h1><a href="/">noah</a></h1>
         </div>
-        <div>
-            <p>publicado em: 14.02.2019, 18:27</p>
-            <h2><a href="/">Lista de Clientes</a></h2>
-            <p>name 1</p>
-            <p>name 2</p>
-        </div>
-        <div>
-            <p>Hi there!</p>
-            <p>It works well!</p>
+        <div class="content container">
+            <div class="row">
+                <div class="col-md-8">
+                    <h2><a href="/">Lista de Clientes</a></h2>
+                    {% for cliente in clientes %}
+                        <div class="post">
+                                <p>Cliente: {{cliente.nome}}</p>
+                                <p>Endereço: {{cliente.endereco.logradouro}}</p>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
         </div>
     </body>
 </html>
